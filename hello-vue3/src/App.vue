@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import {ref} from "vue";
 
-const name = ref("hogehoge");
+const now = new Date().toLocaleTimeString();
+const nowRef = ref(now);
+
+const changeTime = () => {
+  nowRef.value = new Date().toLocaleTimeString();
+};
+
+// 1秒ごとに実行
+setInterval(changeTime, 1000);
 </script>
 
 <template>
-  <h1>こんにちは、{{ name }}！</h1>
+  <div>
+    <p>今の時刻: {{ nowRef }}</p>
+  </div>
 </template>
